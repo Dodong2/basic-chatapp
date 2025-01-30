@@ -33,15 +33,17 @@ const io = new Server(server, {
 const PORT = process.env.PORT || 3000
 const MONGOURI = process.env.MONGOURI
 
+server.listen(PORT, () => {
+  console.log('running on port:', PORT)
+})
+
 const chatRoutes = require('./routes/Chat')
 app.use('/chat', chatRoutes)
 
 
 mongoose.connect(MONGOURI).then(() =>{
     console.log('Connected to the Database')
-    server.listen(PORT, () => {
-        console.log('running on port:', PORT)
-    })
+
 }).catch((err) => {
     console.log('Failed to connect to the Database!', err)
 }) 
