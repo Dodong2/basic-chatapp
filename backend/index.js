@@ -8,11 +8,11 @@ const app = express()
 app.use(express.json())
 app.use(cors())
 /* for deployment later */
-// app.use(cors({
-//     origin: 'https://bookstore-carl.netlify.app',
-//     methods: ['GET', 'POST', 'PUT', 'DELETE'],
-//     allowedHeaders: ['Content-Type', 'Authorization']
-// }))
+app.use(cors({
+    origin: 'https://chatapp-carl.netlify.app',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+}))
 
 
 /* socket.io */
@@ -25,7 +25,7 @@ const { Server } = require('socket.io')
 const server = http.createServer(app)
 const io = new Server(server, {
     cors: {
-        origin: "*",
+        origin: "https://chatapp-carl.netlify.app",
         methods: ["GET", "POST"]
     }
 })
@@ -43,7 +43,6 @@ app.use('/chat', chatRoutes)
 
 mongoose.connect(MONGOURI).then(() =>{
     console.log('Connected to the Database')
-
 }).catch((err) => {
     console.log('Failed to connect to the Database!', err)
 }) 
