@@ -9,7 +9,7 @@ router.get('/messages', async(req, res) => {
         res.status(201).json(messages)
     } catch(err) {
         console.log(err)
-        res.status(500).json({ err: message.err })
+        res.status(500).json({ err: err.message })
     }
 })
 
@@ -22,7 +22,7 @@ router.post('/createMessages', async (req, res) => {
         res.status(201).json(newMessages)
     } catch(err) {
         console.log(err)
-        res.status(500).json({ error: message.err })
+        res.status(500).json({ error: err.message })
     }
 })
 
