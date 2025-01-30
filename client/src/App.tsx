@@ -2,7 +2,9 @@ import { useState, useEffect } from 'react'
 import { io } from 'socket.io-client'
 import './App.css'
 
-const socket = io('http://localhost:3000')
+const socket = io('https://basic-chatapp-kt0q.onrender.com', {
+  transports: ["websocket", "polling"] 
+})
 
 function App() {
   const [message, setMessage] = useState<string>("")
@@ -13,7 +15,7 @@ function App() {
     // Fetch existing messages
     const fetchMessages = async () => {
       try {
-        const response = await fetch('http://localhost:3000/chat/messages')
+        const response = await fetch('https://basic-chatapp-kt0q.onrender.com/chat/messages')
         const data = await response.json()
         setMessages(data.map((msg: { message: string }) => msg.message)) // Map to just the message text
       } catch (err) {

@@ -11,7 +11,8 @@ app.use(cors())
 app.use(cors({
     origin: 'https://chatapp-carl.netlify.app',
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type', 'Authorization']
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true
 }))
 
 
