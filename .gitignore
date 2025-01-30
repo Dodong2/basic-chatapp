@@ -21,4 +21,4 @@ build/
 coverage/
 
 # Environment files
-.env 
+.env
